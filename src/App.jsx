@@ -28,7 +28,7 @@ useEffect(() => {
     try {
       const {data} = await axios.get(
         // "http://localhost:8080/api/v1/user/getuser",
-        "https://getjob-backend-qa7t.onrender.com/api/v1/user/getuser", 
+        "https://getjob-backend-qa7t.onrender.com/api/v1/user/getuser",
         {
           withCredentials: true,
         }
