@@ -164,7 +164,7 @@ const jobCategory = ['GraphicsDesign', 'Mern Stack Developer', 'Accounts and Fin
     )}
     </div>    
     
-    </> : <p>You've not posted any job or may be you deleted all of your jobs!</p>
+    </> : <p className='disclaimer'>You've not posted any job or may be you deleted all of your jobs!</p>
     }
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { Context } from "../../main"
 import axios from "axios";
 import {Link, useNavigate} from 'react-router-dom';
@@ -9,8 +9,26 @@ const Navbar = () => {
 
 const {isAuthorized, setIsAuthorized, user, setUser} = useContext(Context);
 const [drawerOpen, setDrawerOpen] = useState(false);
-
+const navbarRef = useRef(null);
 const navigate = useNavigate();
+
+
+useEffect(() => {
+  // Function to close navbar when clicking outside
+  const handleClickOutside = (event) => {
+    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+      setDrawerOpen(false);
+    }
+  };
+
+  // Add event listener to document
+  document.addEventListener("mousedown", handleClickOutside);
+
+  // Clean up event listener
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
 // logout function
 async function handleLogout() {
@@ -30,10 +48,9 @@ async function handleLogout() {
 }
 
 
-console.log(drawerOpen);
 return (
   <>
-  <nav>
+   <nav ref={navbarRef}>
     <div className="navleft">
       <Link><img src="/JobZee-logos__white.png" alt="navlogo_img" /></Link>
     </div>

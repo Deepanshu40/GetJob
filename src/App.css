@@ -1044,10 +1044,12 @@ nav .logout-btn:hover {
     display: flex;
     position:absolute;
     top:8rem;
-    background-color:rgb(241,243,246);  
+    background-color:rgb(193, 194, 196);  
     height:100vh;
     width:20rem;
     margin-right: 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    z-index: 1;
   }
 
   nav ul {
@@ -1121,6 +1123,13 @@ nav .logout-btn:hover {
  display: flex;
  flex-direction: column;
  background-color: rgb(241,243,246);
+ min-height: 75vh;
+ }
+
+ .job-posted-by-me .disclaimer {
+  text-align: center;
+  font-size: larger;
+  margin-top: 1rem;
  }
  
  .job-posted-by-me h1 {

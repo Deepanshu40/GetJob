@@ -35,7 +35,10 @@ const MyApplication = () => {
   async function handleDelete(applicationId) {
     
     try {
-      await axios.delete(`http://localhost:8080/api/v1/application/jobseeker/delete/${applicationId}`, {withCredentials:true});
+      await axios.delete(
+        // `http://localhost:8080/api/v1/application/jobseeker/delete/${applicationId}`,
+        `https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/delete/${applicationId}`,
+         {withCredentials:true});
       setApplications((prevData) => prevData.filter((application) => application._id !== applicationId));
       toast.success('job application deleted successfully!')
     } catch(error) {
