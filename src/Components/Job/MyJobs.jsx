@@ -44,7 +44,10 @@ if (updationData.salaryFrom && !updationData.salaryTo) {
 }
 console.log(updationData);
 try {
-await axios.put(`http://localhost:8080/api/v1/job/updatejob/${jobId}`, updationData, {
+await axios.put(
+  // `http://localhost:8080/api/v1/job/updatejob/${jobId}`,
+  `https://getjob-backend-qa7t.onrender.com/api/v1/job/updatejob/${jobId}`,
+   updationData, {
   headers: {
     "content-Type":"application/json"
   },
@@ -60,7 +63,10 @@ toast.error(error.response.data.message);
 // deleting job
 async function handleDelete(jobId) {
   try {
-    await axios.delete(`http://localhost:8080/api/v1/job/deletejob/${jobId}`, {withCredentials:true});
+    await axios.delete(
+      // `http://localhost:8080/api/v1/job/deletejob/${jobId}`,
+      `https://getjob-backend-qa7t.onrender.com/api/v1/job/deletejob/${jobId}`,
+       {withCredentials:true});
     setEdit(null);
     toast.success('Job deleted successfully')
     setJobData((prevData) => prevData.filter((job) => job._id !== jobId));

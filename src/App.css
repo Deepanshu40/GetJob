@@ -1018,6 +1018,19 @@ nav .logout-btn:hover {
   padding-right: 2rem;
 }
 
+.navright-drawer {
+  margin-right: 2rem;
+}
+
+@media (min-width:1300px) {
+  
+.navright-drawer, .navright {
+  margin-right: 4rem;
+}
+
+
+}
+
 @media (max-width:1200px) {
   .menuicon {
     display: inline-block;
@@ -1034,6 +1047,7 @@ nav .logout-btn:hover {
     background-color:rgb(241,243,246);  
     height:100vh;
     width:20rem;
+    margin-right: 0;
   }
 
   nav ul {

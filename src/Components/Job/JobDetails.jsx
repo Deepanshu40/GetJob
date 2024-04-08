@@ -13,7 +13,10 @@ const JobDetails = () => {
 
     const fetch = async () => {
       try {
-        const {data} = await axios.get(`http://localhost:8080/api/v1/job/${id}`, {withCredentials:true});
+        const {data} = await axios.get(
+          // `http://localhost:8080/api/v1/job/${id}`,
+          `https://getjob-backend-qa7t.onrender.com/api/v1/job/${id}`,
+           {withCredentials:true});
         setJobData(data.job)
       } catch (e) {
         toast.error(e.response.data);

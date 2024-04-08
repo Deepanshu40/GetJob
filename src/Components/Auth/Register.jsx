@@ -29,7 +29,11 @@ const Register = () => {
   e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/user/register', userData, {headers: {"Content-Type": "application/json" }, withCredentials:true});
+      const response = await axios.post(
+        // 'http://localhost:8080/api/v1/user/register',
+        'https://getjob-backend-qa7t.onrender.com/api/v1/user/register',
+      
+      userData, {headers: {"Content-Type": "application/json" }, withCredentials:true});
       toast.success('user registered successfully');
       navigate('/login');
 

@@ -27,7 +27,10 @@ const PostJob = () => {
 
     try {
       console.log(data);
-      const response = await axios.post('http://localhost:8080/api/v1/job/post', data, {
+      const response = await axios.post(
+        // 'http://localhost:8080/api/v1/job/post',
+        'https://getjob-backend-qa7t.onrender.com/api/v1/job/post',
+         data, {
         headers: {
         "Content-Type": "application/json"
       },

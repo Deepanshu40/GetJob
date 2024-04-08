@@ -15,7 +15,10 @@ const navigate = useNavigate();
 // logout function
 async function handleLogout() {
   try {
-    await axios.get('http://localhost:8080/api/v1/user/logout', {withCredentials:true});
+    await axios.get(
+      // 'http://localhost:8080/api/v1/user/logout',
+      'https://getjob-backend-qa7t.onrender.com/api/v1/user/logout',
+       {withCredentials:true});
     setIsAuthorized(false);
     setUser({});
     setDrawerOpen(false);
