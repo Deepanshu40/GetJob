@@ -34,6 +34,7 @@ useEffect(() => {
       setIsAuthorized(true);
     } catch (error) {
       console.log('User might be not logged in!')
+      console.log(error);
       setUser({});
       setIsAuthorized(false); 
     }
