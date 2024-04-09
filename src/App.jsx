@@ -25,6 +25,7 @@ const {isAuthorized, setIsAuthorized, user, setUser} = useContext(Context);
 
 useEffect(() => {
   const fetchUser = async () => {
+    console.log('req has been made to server");
     try {
       const {data} = await axios.get(
         // "http://localhost:8080/api/v1/user/getuser",
