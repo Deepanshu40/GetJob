@@ -25,18 +25,16 @@ const {isAuthorized, setIsAuthorized, user, setUser} = useContext(Context);
 
 useEffect(() => {
   const fetchUser = async () => {
+    console.log("req has been made to server");
     try {
       const {data} = await axios.get(
         // "http://localhost:8080/api/v1/user/getuser",
-        "https://getjob-backend-qa7t.onrender.com/api/v1/user/getuser",
-        {
-          withCredentials: true,
-        }
-      );
+        "https://getjob-backend-qa7t.onrender.com/api/v1/user/getuser", {withCredentials: true});
       setUser(data.user);
       setIsAuthorized(true);
     } catch (error) {
       console.log('User might be not logged in!')
+      console.log(error);
       setUser({});
       setIsAuthorized(false); 
     }
