@@ -12,10 +12,10 @@ import toast from 'react-hot-toast';
 const Login = () => {
 
   const [userData, setUserData] = useState({
-    role:'',
-    email:'',
-    password:'',
-  });
+      role:'Employer',
+      email:'nishu@gmail.com',
+      password:'12345678',
+    });
 
   const {isAuthorized, setIsAuthorized} = useContext(Context);
   const navigate = useNavigate();
@@ -40,9 +40,9 @@ const Login = () => {
       }
     );
     setUserData({
-      role:'Employer',
-      email:'nishu@gmail.com',
-      password:'12345678',
+      role:'',
+      email:'',
+      password:'',
     });
     setIsAuthorized(true);
     toast.success('logged in successfully')
