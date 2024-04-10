@@ -40,9 +40,9 @@ const Login = () => {
       }
     );
     setUserData({
-      role:'',
-      email:'',
-      password:'',
+      role:'Employer',
+      email:'nishu@gmail.com',
+      password:'12345678',
     });
     setIsAuthorized(true);
     toast.success('logged in successfully')
