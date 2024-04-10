@@ -30,8 +30,7 @@ const Login = () => {
   try {
     const { data } = await axios.post(
       // "http://localhost:8080/api/v1/user/login",
-      "https://getjob-backend-qa7t.onrender.com/api/v1/user/login",
-      
+      "https://getjob-backend-qa7t.onrender.com/api/v1/user/login",      
       userData,
       {
         headers: {
@@ -60,18 +59,9 @@ const Login = () => {
 
   return (
     <div className='loginPage'>
-    <Grid
-     container
-     direction="row"
-     justifyContent="center"
-     alignItems="flex-start"
-   >
-     <Grid container item xs={10}>
-     <Grid container item>
-       <Grid container item xs={5} direction={'column'}>
-
-         <div className='widthfull mt3 flex flex-al-items-center flex-jc-center flex-col'>
-         <img src='JobZeelogo.png' alt='logo' className='width80 height20'></img>
+        <div className="login-form">
+        <div className='logo'>
+         <img src='JobZeelogo.png' alt='logo' className='logo-img'></img>
          <Typography textAlign={'center'} mt={1} fontWeight={700}>Login to your account</Typography>  
          </div>          
 
@@ -103,15 +93,11 @@ const Login = () => {
           <button onClick={handleSubmit} className='font-white widthfull bg-green btn mt3'>Login</button>
          </form>
            <Link to={'/register'} className='register-btn' ><button className='register-btn mb1 mt2 widthfull btn bg-transparent'>Register</button></Link>
-           
          </div>
-        </Grid>
-       <Grid container item className='heightfull' direction={'row'} alignItems={'center'} xs={5}>
-         <img src='/login.png' className='height60' alt='login_page_image' ></img>
-       </Grid>
-     </Grid>
-     </Grid>
-   </Grid>
+        </div>
+        <div className="login-img">
+        <img src='/login.png' alt='login_page_image' ></img>
+        </div>
    </div>
 
   )
