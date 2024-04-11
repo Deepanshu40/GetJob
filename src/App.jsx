@@ -16,12 +16,14 @@ import Register from './Components/Auth/Register';
 import Home from './Components/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import {Context} from './main';
-import {Toaster} from 'react-hot-toast'
+import {Toaster} from 'react-hot-toast';
+import Cookies from "js-cookie";
 
 const App = () => {
 
 const {isAuthorized, setIsAuthorized, user, setUser} = useContext(Context);
-
+const token = Cookies.get('token');
+console.log(token);
 
 useEffect(() => {
   const fetchUser = async () => {
