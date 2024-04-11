@@ -28,6 +28,7 @@ const App = () => {
       try {
         // Access JWT Token from Cookies
         const token = Cookies.get('token');
+        console.log(token);
 
         // Create Axios Instance with JWT Token in Headers
         const api = axios.create({
