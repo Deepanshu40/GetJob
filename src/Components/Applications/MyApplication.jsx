@@ -15,10 +15,16 @@ const MyApplication = () => {
     const fetch = async () => {
       try {
         if (user.role==='Job seeker') {
-          const {data} = await axios.get('http://localhost:8080/api/v1/application/jobseeker/getall', {withCredentials:true})
+          const {data} = await axios.get(
+            // 'http://localhost:8080/api/v1/application/jobseeker/getall',
+            'https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/getall',
+            {withCredentials:true})
           setApplications(data.applications);
         } else if (user.role==='Employer') {
-          const {data} = await axios.get('http://localhost:8080/api/v1/application/employer/getall', {withCredentials:true})
+          const {data} = await axios.get(
+            // 'http://localhost:8080/api/v1/application/employer/getall',
+            'https://getjob-backend-qa7t.onrender.com/api/v1/application/employer/getall',            
+            {withCredentials:true})
           setApplications(data.applications);
         } else {
           setApplications([]);
