@@ -24,11 +24,11 @@ const App = () => {
 const {isAuthorized, setIsAuthorized, user, setUser} = useContext(Context);
 
 // Access JWT Token from Cookies
-const token = document.cookie.split('; ').find(row => row.startsWith('jwtToken=')).split('=')[1];
+const token = Cookies.get();
 
 // Set SameSite and Secure Attributes for the Cookie
-document.cookie = `jwtToken=${token}; SameSite=None; Secure`;
-console.log(token);
+// document.cookie = `jwtToken=${token}; SameSite=None; Secure`;
+// console.log(token);
 
 useEffect(() => {
   const fetchUser = async () => {
