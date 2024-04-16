@@ -29,8 +29,7 @@ const Login = () => {
   e.preventDefault();
   try {
     const { data } = await axios.post(
-      // "http://localhost:8080/api/v1/user/login",
-      "https://getjob-backend-qa7t.onrender.com/api/v1/user/login",      
+      "/api/v1/user/login",
       userData,
       {
         headers: {
@@ -45,7 +44,7 @@ const Login = () => {
       password:'',
     });
     setIsAuthorized(true);
-    toast.success('logged in successfully')
+    toast.success('logged in successfully');
     return navigate('/');
     } catch (error) {
       console.log(error);

@@ -38,8 +38,7 @@ const Application = () => {
 
     try {
       await axios.post(
-        // 'http://localhost:8080/api/v1/application/jobseeker/post',
-        'https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/post',
+        '/api/v1/application/jobseeker/post',
        formData, {
         headers: {
           "Content-Type": "multipart/form-data"

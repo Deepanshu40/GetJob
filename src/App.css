@@ -441,7 +441,7 @@ font-size: 1.1rem;
   align-items: center;
   height: 75vh;
   width: 100%;
-  padding: 5rem 1rem 5rem 1rem;
+  /* padding: 5rem 1rem 5rem 1rem; */
 }
 
 .hero-section .hero-section-left {
@@ -544,7 +544,6 @@ width: 100%;
     width: 100%;
     height: auto;
     opacity: 0.8;
-    height: auto;
 } 
 
 /* .hero-section .hero-section-right img {
@@ -562,9 +561,8 @@ width: 100%;
 @media (max-width:600px) {
 
   .hero-section {
-    margin-top: 4rem;
-    padding: 3rem 1rem 1rem 1rem;
-    height: 60vh;
+    padding: 0 1rem;
+    height: 50vh;
   }
    .hero-badge-section, .popular-categories .badge-section {
     flex-wrap: wrap;
@@ -576,8 +574,8 @@ width: 100%;
     position: absolute;
     z-index: 0;
     width: 100%;
-    height: auto;
-    opacity: 0.8;
+    height: fit-content;
+    opacity: 0.6;
 } 
 
 
@@ -878,6 +876,24 @@ font-weight: 600;
   font-size: 1.2rem;
 }
 
+@media (max-width:600px) {
+  .alljobs {
+    padding: 3rem 1rem;
+  }
+
+  .alljobs h1 {
+    font-size: 2.1rem;
+  }
+  
+  .alljobs .job-card {
+    padding: 2rem 1rem;
+  }
+
+  .alljobs .job-card { 
+  width: 15rem;
+  }
+}
+
 /* Posting new jobs */
 
 .post-job-section, .single-job-section {
@@ -910,7 +926,15 @@ font-size: 1.3rem;
 
 .post-job-section h1, .single-job-section .heading{
   font-size: 3rem;
+  text-align: start;
 }
+
+/* .post-job-section .heading {
+width: 100%;
+display: flex;
+padding: 2rem;
+justify-content: flex-start;
+} */
 
 .post-job-section form {
   display: flex;
@@ -949,13 +973,13 @@ font-size: 1.3rem;
     outline: none;
 } 
 
-.job-detail {
+.post-job-section .job-detail {
   display: flex;
   justify-content: space-between;
 
 }
 
-.job-detail input, .job-detail select {
+.post-job-section .job-detail input, .post-job-section .job-detail select {
   width: 49%;
 }
 
@@ -976,6 +1000,44 @@ font-size: 1.3rem;
 .mandatory-field {
   color: red;
   opacity: 0.7;
+}
+
+@media (max-width:600px) {
+
+  .post-job-section input, .post-job-section select, .post-job-section textarea {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .post-job-section textarea {
+    margin-top: 2rem;
+  }
+
+  .post-job-section .job-detail {
+    flex-direction: column;
+  }
+
+  .post-job-section .job-detail input, .post-job-section .job-detail select {
+    width: 100%;
+}
+
+.post-job-section, .single-job-section {
+  padding: 2rem 0;
+}
+
+
+.post-job-section h1, .single-job-section .heading {
+  font-size: 2.3rem;
+}
+
+.post-job-section form {
+  padding: 1rem;
+}
+
+.post-job-section textarea {
+  margin-bottom: 0;
+}
+
 }
 
 /* Navbar */
@@ -1414,7 +1476,7 @@ nav .logout-btn:hover {
    font-size: 1rem;
  }
  
- .myApplications textarea {
+ .myApplications textarea, .single-job-section textarea {
    border: none;
    scrollbar-width: none;
    width: 100%;
@@ -1425,6 +1487,22 @@ nav .logout-btn:hover {
    background-color: transparent;
  }
  
+ .single-job-section .description {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+ }
+
+ .single-job-section .description p {
+  padding: 0;
+ }
+
+ .single-job-section .description div {
+  display: flex;
+  align-items: flex-start;
+  /* width: 100%; */
+ }
+
  .myApplications textarea:focus {
    outline: none;
  }
@@ -1567,6 +1645,7 @@ nav .logout-btn:hover {
   top: 2rem;
   left: 10rem;
   width: 70vw;
+  object-fit: contain;
   height: 90vh;
   z-index: 3;
  }

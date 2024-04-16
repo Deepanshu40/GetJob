@@ -14,8 +14,7 @@ const JobDetails = () => {
     const fetch = async () => {
       try {
         const {data} = await axios.get(
-          // `http://localhost:8080/api/v1/job/${id}`,
-          `https://getjob-backend-qa7t.onrender.com/api/v1/job/${id}`,
+          `/api/v1/job/${id}`,
            {withCredentials:true});
         setJobData(data.job)
       } catch (e) {
@@ -38,11 +37,19 @@ const JobDetails = () => {
         <p>Country: <span>{jobData.country}</span></p>
         <p>City: <span>{jobData.city}</span></p>
         <p>Location: <span>{jobData.location}</span></p>
-        <p>Description: <span>{jobData.description}</span></p>
+        <div className="description">
+          <div>
+          <p>Description:</p>
+          </div>
+          <div>
+          <textarea value={jobData.description} disabled></textarea> 
+          </div>
+        </div>
+        {/* <p>Description: <span>{jobData.description}</span></p> */}
         {(jobData.salaryFrom) ? (
         <>
         <p>Salary range: <span>Rs. {jobData.salaryFrom} - {jobData.salaryTo}</span></p>
-        </>) : <p><span>Rs {jobData.fixedSalary}</span></p>}
+        </>) : <p>Fixed Salary: <span>Rs {jobData.fixedSalary}</span></p>}
         {(user && user.role === 'Job seeker') && <Link to={`/application/${jobData._id}`}><button className='applybtn'>Apply Now</button></Link>}
       </div>
     </div>

@@ -15,7 +15,7 @@ import Register from './Components/Auth/Register';
 import Home from './Components/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import { Context } from './main';
-import { Toaster } from 'react-hot-toast';
+import toast, {Toaster} from 'react-hot-toast';
 import Cookies from 'js-cookie';
 
 const App = () => {
@@ -23,23 +23,19 @@ const App = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      console.log('Request has been made to server');
-
       try {
         // Access JWT Token from Cookies
         const token = Cookies.get();
-        console.log(token);
 
         // Create Axios Instance with JWT Token in Headers
-        const api = axios.create({
-          baseURL: 'https://getjob-backend-qa7t.onrender.com/api/v1',
+        const api = await axios.create({
           headers: {
             'Authorization': `Bearer ${token}`
           },
           withCredentials: true
         });
-
-        const { data } = await api.get('/user/getuser');
+      
+        const { data } = await api.get('/api/v1/user/getuser');
         console.log(data);
         setUser(data.user);
         setIsAuthorized(true);
@@ -48,6 +44,7 @@ const App = () => {
         console.log(error);
         setUser({});
         setIsAuthorized(false);
+        // toast.error(error.response.data.message)
       }
     };
 

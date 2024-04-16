@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { Context } from '../../main';
-import { Superscript } from '@mui/icons-material';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
@@ -28,8 +27,7 @@ const PostJob = () => {
     try {
       console.log(data);
       const response = await axios.post(
-        // 'http://localhost:8080/api/v1/job/post',
-        'https://getjob-backend-qa7t.onrender.com/api/v1/job/post',
+        '/api/v1/job/post',
          data, {
         headers: {
         "Content-Type": "application/json"
