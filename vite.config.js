@@ -9,6 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://getjob-backend-qa7t.onrender.com',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
