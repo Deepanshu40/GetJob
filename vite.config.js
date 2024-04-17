@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://getjob-backend-qa7t.onrender.com/api',
+        target: 'https://getjob-backend-qa7t.onrender.com',
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
