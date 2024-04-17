@@ -20,7 +20,8 @@ import Cookies from 'js-cookie';
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
-
+  console.log(`/api`);
+  
   useEffect(() => {
     const fetchUser = async () => {
       try {
