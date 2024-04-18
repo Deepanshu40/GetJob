@@ -36,7 +36,7 @@ const App = () => {
           withCredentials: true
         });
       
-        const { data } = await api.get('/api/v1/user/getuser');
+        const { data } = await api.get('https://getjob-backend-qa7t.onrender.com/api/v1/user/getuser');
         console.log(data);
         setUser(data.user);
         setIsAuthorized(true);

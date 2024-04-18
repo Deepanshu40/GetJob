@@ -17,12 +17,12 @@ const MyApplication = () => {
       try {
         if (user.role==='Job seeker') {
           const {data} = await axios.get(
-            '/api/v1/application/jobseeker/getall',
+            'https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/getall',
             {withCredentials:true})
           setApplications(data.applications);
         } else if (user.role==='Employer') {
           const {data} = await axios.get(
-            '/api/v1/application/employer/getall',            
+            'https://getjob-backend-qa7t.onrender.com/api/v1/application/employer/getall',            
             {withCredentials:true})
           setApplications(data.applications);
         } else {
@@ -41,7 +41,7 @@ const MyApplication = () => {
     
     try {
       await axios.delete(
-        `/api/v1/application/jobseeker/delete/${applicationId}`,
+        `https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/delete/${applicationId}`,
          {withCredentials:true});
       setApplications((prevData) => prevData.filter((application) => application._id !== applicationId));
       toast.success('job application deleted successfully!')

@@ -14,7 +14,7 @@ const JobDetails = () => {
     const fetch = async () => {
       try {
         const {data} = await axios.get(
-          `/api/v1/job/${id}`,
+          `https://getjob-backend-qa7t.onrender.com/api/v1/job/${id}`,
            {withCredentials:true});
         setJobData(data.job)
       } catch (e) {

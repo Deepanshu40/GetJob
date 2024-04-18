@@ -14,7 +14,7 @@ useEffect(() => {
   const fetch = async () => {
     try {
       const {data} = await axios.get(
-          '/api/v1/job/getmyjob',
+          'https://getjob-backend-qa7t.onrender.com/api/v1/job/getmyjob',
           {withCredentials:true});
       setJobData(data.myJobs)  
     } catch (e) {

@@ -30,7 +30,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        '/api/v1/user/register',
+        'https://getjob-backend-qa7t.onrender.com/api/v1/user/register',
       
       userData, {headers: {"Content-Type": "application/json" }, withCredentials:true});
       toast.success('user registered successfully');

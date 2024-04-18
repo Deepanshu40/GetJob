@@ -34,7 +34,7 @@ useEffect(() => {
 async function handleLogout() {
   try {
     await axios.get(
-      '/api/v1/user/logout',
+      'https://getjob-backend-qa7t.onrender.com/api/v1/user/logout',
        {withCredentials:true});
     setIsAuthorized(false);
     setUser({});
