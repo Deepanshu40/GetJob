@@ -9,6 +9,7 @@ const MyApplication = () => {
   const [applications, setApplications] = useState([]);
   const {user} = useContext(Context);
   const [preview, setPreview] = useState('');
+ 
 
   useEffect(() => {
 
@@ -54,6 +55,9 @@ const MyApplication = () => {
     setPreview(applicationId);
   }
 
+  function setPopupId() {
+    setPreview('');
+  }
 
   return (
     <div className="myApplications">
@@ -63,8 +67,8 @@ const MyApplication = () => {
       <div className="jobApplications">
         {(applications.length) ?   
         <>
-        {applications.map((application) => 
-        <>
+        {applications.map((application, index) => 
+        <div key={index}>
         <div className='application'>
         <div className="details">
         <p>Name: <span>{application.name}</span></p>  
@@ -78,7 +82,7 @@ const MyApplication = () => {
         </div>
         {(preview===application._id) && 
         <div className="resumeModel">
-        <ResumeModel url={application.resume.url}/>
+        <ResumeModel url={application.resume.url} setPopupId={setPopupId}/>
         </div>    
         }
         {user.role==='Job seeker' && <>
@@ -88,7 +92,7 @@ const MyApplication = () => {
         </>}
         </div>
         <hr style={{margin:'2rem 0'}} />        
-        </>
+        </div>
       )}
         </>
         : "There are no job applications to display"}
