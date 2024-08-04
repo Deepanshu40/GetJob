@@ -17,7 +17,6 @@ const Application = () => {
 
 
   const {id} = useParams();
-  console.log(user);
   const navigate = useNavigate();
 
   function handleInput(e) {
@@ -59,7 +58,6 @@ const Application = () => {
       navigate('/job/getall');
     } catch(error) {
       toast.error(error.response.data.message);
-      console.dir(error);
     }
   }
 
