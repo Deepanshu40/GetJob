@@ -24,7 +24,6 @@ const PostJob = () => {
     e.preventDefault();
 
     try {
-      console.log(data);
       const response = await axios.post(
         `${backendUrl}/api/v1/job/post`,
          data, {
@@ -50,7 +49,6 @@ const PostJob = () => {
 
     } catch(e) {
       toast.error(e.response.data.message)
-      console.dir(e.response.data.message);
       }
 }
 

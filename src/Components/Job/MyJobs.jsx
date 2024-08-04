@@ -46,7 +46,6 @@ if (updationData.salaryFrom && !updationData.salaryTo) {
 } else if (updationData.salaryFrom && updationData.salaryTo) {
   updationData.fixedSalary = null;
 }
-console.log(updationData);
 try {
 await axios.put(
   `${backendUrl}/api/v1/job/updatejob/${jobId}`,
@@ -74,7 +73,6 @@ async function handleDelete(jobId) {
     setJobData((prevData) => prevData.filter((job) => job._id !== jobId));
   }
   catch(error) {
-    console.dir(error);
     toast.error(error.response.data.message);
   }
 

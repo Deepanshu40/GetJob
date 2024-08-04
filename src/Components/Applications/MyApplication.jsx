@@ -27,7 +27,6 @@ const MyApplication = () => {
           // nothing will happen
         } else {
           setApplications([]);
-          console.log(user.role);
           console.log('It apears user is not logged in!')
         }
       } catch(error) {
