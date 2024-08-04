@@ -19,9 +19,8 @@ import toast, {Toaster} from 'react-hot-toast';
 import Cookies from 'js-cookie';
 
 const App = () => {
-  const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
-  console.log(`/api`);
-  
+  const { isAuthorized, setIsAuthorized, user, setUser, backendUrl } = useContext(Context);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -36,13 +35,11 @@ const App = () => {
           withCredentials: true
         });
       
-        const { data } = await api.get('https://getjob-backend-qa7t.onrender.com/api/v1/user/getuser');
-        console.log(data);
+        const { data } = await api.get(`${backendUrl}/api/v1/user/getuser`);
         setUser(data.user);
         setIsAuthorized(true);
       } catch (error) {
         console.log('User might not be logged in!');
-        console.log(error);
         setUser({});
         setIsAuthorized(false);
         // toast.error(error.response.data.message)

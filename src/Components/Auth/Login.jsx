@@ -12,14 +12,14 @@ import toast from 'react-hot-toast';
 const Login = () => {
 
   const [userData, setUserData] = useState({
-      role:'Employer',
-      email:'nishu@gmail.com',
-      password:'12345678',
+      role:'',
+      email:'',
+      password:'',
     });
 
-  const {isAuthorized, setIsAuthorized} = useContext(Context);
+  const {isAuthorized, setIsAuthorized, backendUrl} = useContext(Context);
   const navigate = useNavigate();
-  
+
   if (isAuthorized) {
     return <Navigate to={'/'} />
   }
@@ -29,7 +29,7 @@ const Login = () => {
   e.preventDefault();
   try {
     const { data } = await axios.post(
-      "https://getjob-backend-qa7t.onrender.com/api/v1/user/login",
+      `${backendUrl}/api/v1/user/login`,
       userData,
       {
         headers: {

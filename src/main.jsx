@@ -9,6 +9,7 @@ export const Context = createContext({
 const AppWrapper = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [user, setUser] = useState({});
+  const backendUrl = (import.meta.env.VITE_BACKEND_ENVIRONMENT_TYPE === "DEVELOPMENT") ? import.meta.env.VITE_BACKEND_DEV_URL : import.meta.env.VITE_BACKEND_PROD_URL;
 
   return (
     <Context.Provider
@@ -17,6 +18,7 @@ const AppWrapper = () => {
         setIsAuthorized,
         user,
         setUser,
+        backendUrl
       }}
     >
       <App />

@@ -5,16 +5,16 @@ import { Link, useParams } from 'react-router-dom';
 import { Context } from '../../main';
 
 const JobDetails = () => {
-  
   const [jobData, setJobData] = useState([]);
   const {id} = useParams();
-  const {user, setUser, isAuthorized, setIsAuthorized} = useContext(Context);
+  const {user, setUser, isAuthorized, setIsAuthorized, backendUrl} = useContext(Context);
+
   useEffect(() => {
 
     const fetch = async () => {
       try {
         const {data} = await axios.get(
-          `https://getjob-backend-qa7t.onrender.com/api/v1/job/${id}`,
+          `${backendUrl}/api/v1/job/${id}`,
            {withCredentials:true});
         setJobData(data.job)
       } catch (e) {
@@ -37,19 +37,14 @@ const JobDetails = () => {
         <p>Country: <span>{jobData.country}</span></p>
         <p>City: <span>{jobData.city}</span></p>
         <p>Location: <span>{jobData.location}</span></p>
-        <div className="description">
-          <div>
-          <p>Description:</p>
-          </div>
-          <div>
-          <textarea value={jobData.description} disabled></textarea> 
-          </div>
-        </div>
-        {/* <p>Description: <span>{jobData.description}</span></p> */}
         {(jobData.salaryFrom) ? (
         <>
         <p>Salary range: <span>Rs. {jobData.salaryFrom} - {jobData.salaryTo}</span></p>
         </>) : <p>Fixed Salary: <span>Rs {jobData.fixedSalary}</span></p>}
+        <div className="description">
+          <p>Description:</p>
+          <textarea value={jobData.description} rows={2} disabled></textarea> 
+        </div>
         {(user && user.role === 'Job seeker') && <Link to={`/application/${jobData._id}`}><button className='applybtn'>Apply Now</button></Link>}
       </div>
     </div>

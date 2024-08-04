@@ -5,10 +5,9 @@ import toast from 'react-hot-toast';
 
 const PostJob = () => {
 
-  const jobCategory = ['GraphicsDesign', 'Mern Stack Developer', 'Accounts and Finance', 'Logistics Operation', 'Content writer', 'Graphic Designer', 'computer data operator'];
-  const {user, setUser, isAuthorized, setIsAuthorized} = useContext(Context);
+  const jobCategory = ['GraphicsDesign', 'Mern Stack Developer', 'Marketing & Sales', 'IT & Software' , 'Accounts and Finance', 'Logistics Operation', 'Content writer', 'Graphic Designer', 'computer data operator'];
+  const {user, setUser, isAuthorized, setIsAuthorized, backendUrl} = useContext(Context);
   const [data, setData] = useState({
-    title: '',
     description: '',
     category: '',
     country: '',
@@ -27,7 +26,7 @@ const PostJob = () => {
     try {
       console.log(data);
       const response = await axios.post(
-        'https://getjob-backend-qa7t.onrender.com/api/v1/job/post',
+        `${backendUrl}/api/v1/job/post`,
          data, {
         headers: {
         "Content-Type": "application/json"

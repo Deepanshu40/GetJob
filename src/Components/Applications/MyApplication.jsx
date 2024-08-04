@@ -5,11 +5,9 @@ import { Context } from '../../main';
 import ResumeModel from './ResumeModel';
 
 const MyApplication = () => {
-
   const [applications, setApplications] = useState([]);
-  const {user} = useContext(Context);
+  const {user, backendUrl} = useContext(Context);
   const [preview, setPreview] = useState('');
- 
 
   useEffect(() => {
 
@@ -17,16 +15,19 @@ const MyApplication = () => {
       try {
         if (user.role==='Job seeker') {
           const {data} = await axios.get(
-            'https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/getall',
+            `${backendUrl}/api/v1/application/jobseeker/getall`,
             {withCredentials:true})
           setApplications(data.applications);
         } else if (user.role==='Employer') {
           const {data} = await axios.get(
-            'https://getjob-backend-qa7t.onrender.com/api/v1/application/employer/getall',            
+            `${backendUrl}/api/v1/application/employer/getall`,            
             {withCredentials:true})
           setApplications(data.applications);
+        } else if (user.role==='Employer' || user.role==='Job seeker') {
+          // nothing will happen
         } else {
           setApplications([]);
+          console.log(user.role);
           console.log('It apears user is not logged in!')
         }
       } catch(error) {
@@ -41,7 +42,7 @@ const MyApplication = () => {
     
     try {
       await axios.delete(
-        `https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/delete/${applicationId}`,
+        `${backendUrl}/api/v1/application/jobseeker/delete/${applicationId}`,
          {withCredentials:true});
       setApplications((prevData) => prevData.filter((application) => application._id !== applicationId));
       toast.success('job application deleted successfully!')

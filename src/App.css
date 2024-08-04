@@ -918,12 +918,15 @@ font-weight: 600;
   font-weight: 550;
 }
 
-.single-job-section .content span {
+.single-job-section .content span, .single-job-section .content textarea {
 font-weight: 500;
 color: black;
 font-size: 1.3rem;
 }
 
+.single-job-section .content .description {
+  margin-top: 1.3rem;
+}
 .post-job-section h1, .single-job-section .heading{
   font-size: 3rem;
   text-align: start;

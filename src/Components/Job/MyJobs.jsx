@@ -1,12 +1,14 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import {Context} from '../../main';
 
 const MyJobs = () => {
-const [jobData, setJobData] = useState([])
-const [edit, setEdit] = useState(null);
+  const {backendUrl} = useContext(Context);
+  const [jobData, setJobData] = useState([])
+  const [edit, setEdit] = useState(null);
 
 // page refresh
 useEffect(() => {
@@ -14,7 +16,7 @@ useEffect(() => {
   const fetch = async () => {
     try {
       const {data} = await axios.get(
-          'https://getjob-backend-qa7t.onrender.com/api/v1/job/getmyjob',
+          `${backendUrl}/api/v1/job/getmyjob`,
           {withCredentials:true});
       setJobData(data.myJobs)  
     } catch (e) {
@@ -47,8 +49,7 @@ if (updationData.salaryFrom && !updationData.salaryTo) {
 console.log(updationData);
 try {
 await axios.put(
-  // `http://localhost:8080/api/v1/job/updatejob/${jobId}`,
-  `https://getjob-backend-qa7t.onrender.com/api/v1/job/updatejob/${jobId}`,
+  `${backendUrl}/api/v1/job/updatejob/${jobId}`,
    updationData, {
   headers: {
     "content-Type":"application/json"
@@ -66,8 +67,7 @@ toast.error(error.response.data.message);
 async function handleDelete(jobId) {
   try {
     await axios.delete(
-      // `http://localhost:8080/api/v1/job/deletejob/${jobId}`,
-      `https://getjob-backend-qa7t.onrender.com/api/v1/job/deletejob/${jobId}`,
+      `${backendUrl}/api/v1/job/deletejob/${jobId}`,
        {withCredentials:true});
     setEdit(null);
     toast.success('Job deleted successfully')
@@ -80,7 +80,7 @@ async function handleDelete(jobId) {
 
 }
 console.log(edit);
-const jobCategory = ['GraphicsDesign', 'Mern Stack Developer', 'Accounts and Finance', 'Logistics Operation', 'Content writer', 'Graphic Designer', 'computer data operator'];
+const jobCategory = ['GraphicsDesign', 'Mern Stack Developer', 'Accounts and Finance', 'Marketing & Sales', 'IT & Software' ,'Logistics Operation', 'Content writer', 'Graphic Designer', 'computer data operator'];
 
 
 
@@ -161,7 +161,7 @@ const jobCategory = ['GraphicsDesign', 'Mern Stack Developer', 'Accounts and Fin
         <button className='deletebtn' onClick={()=> handleDelete(data._id)}>Delete</button>
       </div>
     </div>
-    <hr style={{width:'90%', margin:'1rem auto'}}/>
+    <hr style={{width:'90%', margin:'1rem auto 0'}}/>
     </>
     )}
     </div>    

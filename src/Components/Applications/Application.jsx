@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import {Context} from '../../main';
 
 const Application = () => {
-
+  const {user, backendUrl} = useContext(Context);
   const [applicationData, setApplicationData] = useState({
-    name:'',
-    email:'',
-    phone:'',
+    name:user.name,
+    email:user.email,
+    phone:user.phone,
     address:'',
     coverLetter:'',
     resume:''
   });
+
+
   const {id} = useParams();
+  console.log(user);
   const navigate = useNavigate();
-  
+
   function handleInput(e) {
     if (e.target.name==='resume') {
-      // console.dir(e.target)
     setApplicationData({...applicationData, [e.target.name]:e.target.files[0]})
     } else {
       setApplicationData({...applicationData, [e.target.name]:e.target.value})
@@ -26,7 +29,6 @@ const Application = () => {
   }
 
   async function submitApplication() {
-    // console.log(applicationData);
     const formData = new FormData();
     formData.append("name", applicationData.name);
     formData.append("email", applicationData.email);
@@ -38,7 +40,7 @@ const Application = () => {
 
     try {
       await axios.post(
-        'https://getjob-backend-qa7t.onrender.com/api/v1/application/jobseeker/post',
+        `${backendUrl}/api/v1/application/jobseeker/post`,
        formData, {
         headers: {
           "Content-Type": "multipart/form-data"

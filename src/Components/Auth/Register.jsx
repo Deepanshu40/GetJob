@@ -11,9 +11,8 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Application from '../Applications/Application';
 
-
 const Register = () => {
-
+  const {backendUrl} = useContext(Context);
   const [userData, setUserData] = useState({
     role:'Employer',
     name:'',
@@ -30,7 +29,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        'https://getjob-backend-qa7t.onrender.com/api/v1/user/register',
+        `${backendUrl}/api/v1/user/register`,
       
       userData, {headers: {"Content-Type": "application/json" }, withCredentials:true});
       toast.success('user registered successfully');

@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const Navbar = () => {
 
-const {isAuthorized, setIsAuthorized, user, setUser} = useContext(Context);
+const {isAuthorized, setIsAuthorized, user, setUser, backendUrl} = useContext(Context);
 const [drawerOpen, setDrawerOpen] = useState(false);
 const navbarRef = useRef(null);
 const navigate = useNavigate();
@@ -34,7 +34,7 @@ useEffect(() => {
 async function handleLogout() {
   try {
     await axios.get(
-      'https://getjob-backend-qa7t.onrender.com/api/v1/user/logout',
+      `${backendUrl}/api/v1/user/logout`,
        {withCredentials:true});
     setIsAuthorized(false);
     setUser({});

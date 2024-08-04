@@ -1,17 +1,19 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom';
+import { Context } from '../../main';
 
 
 const Job = () => {
-
+  const {backendUrl} = useContext(Context);
   const [jobData, setJobData] = useState([]);
+
   useEffect(() => {
     const fetch = async () => {
       try {
         const {data} = await axios.get(
-          'https://getjob-backend-qa7t.onrender.com/api/v1/job/getall', 
+          `${backendUrl}/api/v1/job/getall`, 
           {
         withCredentials:true});
         setJobData(data.jobs)
@@ -54,4 +56,4 @@ const Job = () => {
   )
 }
 
-export default Job
+export default Job;
